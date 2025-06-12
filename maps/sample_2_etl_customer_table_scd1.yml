@@ -1,0 +1,22 @@
+file_operator:
+  operator: read
+  connection: file
+  properties:
+    file: sample_customer.json
+    schema:
+      etldate: timestamp
+      custid: string
+      balance: decimal(24, 10)
+
+truncate_test_table:
+  operator: sql
+  connection: catalog
+  properties:
+    sql: TRUNCATE TABLE test.sample_table_1
+
+write_operator:
+  operator: write
+  connection: catalog
+  properties:
+    data: file_operator
+    tablename: test.sample_table_1

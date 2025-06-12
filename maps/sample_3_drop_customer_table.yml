@@ -1,0 +1,5 @@
+drop_test_table:
+  operator: sql
+  connection: catalog
+  properties:
+    sql: DROP TABLE IF EXISTS test.sample_table_1
